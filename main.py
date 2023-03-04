@@ -61,7 +61,7 @@ class Human:
             return
         self.money += self.job.salary
         self.gladness -= self.job.gladness_less
-        self.hunger -= 4
+        self.hunger -= 3
 
     def chill(self):
         pass
