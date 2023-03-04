@@ -12,18 +12,55 @@ class Human:
         self.home = home
 
     def get_home(self):
-        pass
+        self.home = House()
+
 
     def get_job(self):
-        pass
+        self.job = Job(job_list)
     def get_car(self):
-        pass
+        self.car = Car(brands_of_cars)
 
     def eat(self):
-        pass
+        if self.home.food <= 0:
+            self.shopping("food")
+        else:
+            if self.hunger > 95:
+                self.home.food -= 100 - self.hunger
+                self.hunger = 100
+            else:
+                self.hunger += 5
+                self. home.food -= 5
+
+    def drive_car(self):
+        if self.car.drive():
+            return True
+        else:
+            if self.car.fuel < self.car.consumption:
+                self.shopping("fuel")
+            else:
+                self.car.repair()
+                return False
+    def shopping(self, items):
+        if items == "fuel":
+            print("I bought fuel")
+            self.money -= 100
+            self.car.pump_gas()
+
+        if not self.drive_car():
+            return
+
+        if items == "food":
+            print("Bought food")
+            self.money -= 50
+            self.home.food += 50
+
 
     def work(self):
-        pass
+        if not self.drive_car():
+            return
+        self.money += self.job.salary
+        self.gladness -= self.job.gladness_less
+        self.hunger -= 4
 
     def chill(self):
         pass
@@ -42,19 +79,33 @@ class Human:
 
 
 class Job:
-    def __init__(self):
-        pass
+    def __init__(self, job_list):
+        self.job = random.choice(list(job_list))
+        self.salary = job_list[self.job]["salary"]
+        self.gladness_less = job_list[self.job]["gladness_less"]
 
 
-class Home:
+job_list = {
+    "Python developer": {"salary": 40, "gladness_less": 5},
+    "Java developer": {"salary": 55, "gladness_less": 15},
+    "C# developer": {"salary": 50, "gladness_less": 10},
+    "C++ developer": {"salary": 60, "gladness_less": 25},
+    "Swift developer": {"salary": 55, "gladness_less": 20}
+}
+
+class House:
     def __init__(self):
-        pass
+        self.food = 0
+        self.mess = 0
+        #add space
 
 class Car:
     def __init__(self, brand_list):
         self.brand = random.choice(list(brand_list))
-        self.fuel = brand_list[self.brand]["fuel"]
-        self.durability = brand_list[self.brand]["durability"]
+        self.max_fuel = brand_list[self.brand]["fuel"]
+        self.fuel = self.max_fuel
+        self.max_durability = brand_list[self.brand]["durability"]
+        self.durability = self.max_durability
         self.consumption = brand_list[self.brand]["consumption"]
 
     def drive(self):
@@ -65,6 +116,13 @@ class Car:
         else:
             print("The car cannot move")
             return False
+    def pump_gas(self):
+        self.fuel = self.max_fuel
+        #calculate the cost depending on galons
+
+    def repair(self):
+        self.durability = self.max_durability
+        #repair only for +20 check under max value
 
 
 
@@ -81,8 +139,8 @@ brands_of_cars = {
 #nick = Human("Nick")
 #jeb = Human("Jeb")
 
-car = Car("Toyota")
+car1 = Car(brands_of_cars)
+car2 = Car(brands_of_cars)
 
-#car.add_passenger(nick)
-#car.add_passenger(jeb)
-car.print_passengers()
+print(car1.brand)
+print(car2.brand)
