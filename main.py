@@ -101,7 +101,7 @@ class Human:
             print("Starvation...")
             return False
         if self.money < -500:
-            print("Bankrupt...")
+            print("Bankrupt....")
             return False
 
     def live(self, day):
