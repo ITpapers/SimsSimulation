@@ -4,9 +4,9 @@ import random
 class Human:
     def __init__(self, name="Human", job=None, home=None, car=None):
         self.name = name
+        self.hunger = 50
         self.money = 100
         self.gladness = 50
-        self.hunger = 50
         self.car = car
         self.job = job
         self.home = home
@@ -120,6 +120,12 @@ class Human:
         self.days_indexes(day)
 
         dice = random.randint(1,4)
+
+        if self.hunger < 20:
+            print("I'll go eat")
+            self.eat()
+        elif self.money < 0:
+            print(" ")
 
         if dice == 1:
             print("Start working")
