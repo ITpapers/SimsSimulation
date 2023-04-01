@@ -1,17 +1,27 @@
-import requests
+#ry:
+    #the code we need to test
+#except:
+    #in case of the error
+#else:
+    #no error
+#finally:
+    #just place to clean up (close all connections, clean mem...)
 
-def first_function():
-    pass
 
-class Human:
-    pass
+class BuildingError(Exception):
+    def __str__(self):
+        return f"With this much materials I cannot build a house!"
 
-rq = requests
-first_f = first_function
-nick = Human()
+def checker_materials(amout_needed, amout):
+    if amout_needed > amout:
+        raise BuildingError(amout, "Not enough materials")
+    else:
+        return "enough materials"
 
-intro_list = []
-for method in dir():
-    print(method)
+materials = 200
 
+try:
+    print(checker_materials(400, materials))
+except BuildingError as error:
+    print(error.args)
 
