@@ -1,27 +1,37 @@
+def checker(function):
+    def checker(*args, **kwargs):
+        try:
+            result = function(*args, **kwargs)
+        except Exception as exc:
+            print(f"We have error {exc}")
+        else:
+            print(f"No Errors. Result - {result}")
+    return checker
+
+@checker
+def calculate(expression):
+    return eval(expression)
+
+#calculate = checker(calculate)
+calculate("2/0")
+
+"""
+def helper(work):
+    work_in_memory = work
+    def helperTwo(work):
+        return f"I will help you with you {work_in_memory}. Afterwards I will help you with {work}"
+    return helperTwo
+
+helperTwo = helper("homework")
+
+helperTwo("work")
 
 
+print(helperTwo("cleaning"))
+print(helperTwo("driving"))
+print(helperTwo("cleaning"))
 
-def raise_to_the_degrees(number, max_degree):
-    i = 0
-    for _ in range(max_degree):
-        yield number**i
-        i += 1
-
-
-
-res = raise_to_the_degrees(12345, 5)
-print(res)
-
-for elem in res:
-    print(elem)
-print("!!!")
-
-for elem in res:
-    print(elem)
-
-
-
-
+"""
 
 
 
