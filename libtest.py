@@ -1,3 +1,98 @@
+def checker(*exc_types):
+    def checker(function):
+        def checker(*args, **kwargs):
+            try:
+                reluts = function(*args, **kwargs)
+            except (exc_types) as exc:
+                print(f"We have problems {exc}")
+            else:
+                print(f"No problems. Result - {reluts}")
+        return checker
+    return checker
+
+@checker(NameError, TypeError, SyntaxError)
+def calculate(expression):
+    return eval(expression)
+
+@checker(Exception)
+def calculateSumofTwoExp(expression1,expression2):
+    return eval(expression1) + eval(expression2)
+
+
+
+
+Make calculator with FULL an HALF Expressions like *2 OR +8 to prev result
+Assignment 2: We have an unfinished calculator function:
+
+def calculate(expression):
+    return eval(expression)
+
+Decorate it so that it works as a full-fledged calculator.
+Also, the decorator should ensure that the code is stable in execution, while pointing out the problem.
+
+
+
+
+
+calculate("2+ff2")
+calculateSumofTwoExp("2+2", "3+3")
+
+
+
+
+
+
+"""
+def helper(work):
+    work_in_memory = work
+    def helperLocked(work):
+        return f"I will help you with {work_in_memory}. Afterwards I will help you with {work}"
+    return helperLocked
+
+helper = helper("microsoft stocks")
+print(helper("sell them"))
+print(helper("buy more"))
+"""
+
+
+"""
+class Helper:
+    def __init__(self, work):
+        self.work = work
+    def __call__(self, work):
+        return f"I will help you with {self.work}. Afterwards I will help you with {work}"
+
+helper = Helper("homework")
+
+print(helper("cleaning"))
+
+
+"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
 def checker(function):
     def checker(*args, **kwargs):
         try:
@@ -15,7 +110,7 @@ def calculate(expression):
 #calculate = checker(calculate)
 calculate("2/0")
 
-"""
+
 def helper(work):
     work_in_memory = work
     def helperTwo(work):
