@@ -1,3 +1,29 @@
+import logging
+logging.basicConfig(level=logging.DEBUG,
+                    filename="logs.log",
+                    filemode="w",
+                    format="We have next logging message:%(asctime)s:%(levelname)s -%(message)s")
+try:
+    print(10 / 0)
+except Exception:
+    logging.error("Division By Zero")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
 def checker(*exc_types):
     def checker(function):
         def checker(*args, **kwargs):
@@ -21,23 +47,12 @@ def calculateSumofTwoExp(expression1,expression2):
 
 
 
-Make calculator with FULL an HALF Expressions like *2 OR +8 to prev result
-Assignment 2: We have an unfinished calculator function:
-
-def calculate(expression):
-    return eval(expression)
-
-Decorate it so that it works as a full-fledged calculator.
-Also, the decorator should ensure that the code is stable in execution, while pointing out the problem.
-
-
-
 
 
 calculate("2+ff2")
 calculateSumofTwoExp("2+2", "3+3")
 
-
+"""
 
 
 
