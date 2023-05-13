@@ -1,3 +1,49 @@
+def adder(*args, **kwargs):
+    result = 0
+    for elem in args:
+        if type(elem) == int or type(elem) == float or type(elem) == bool:
+            result += elem
+    for elem in kwargs.values():
+        if type(elem) == int or type(elem) == float or type(elem) == bool:
+            result += elem
+    return result
+
+
+
+
+
+"""
+>>> 2+2
+5
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+"""
+
+"""
+if 2+3 == 4:
+    print("In fact, 2 + 2 equals 4")
+
+assert 2+2 == 5, "wrong calculation"
+
+"""
+
+"""
+import logging
+#logging.basicConfig(level=logging.DEBUG)
+logging.debug("debug")
+logging.info("info")
+logging.warning("warning")
+logging.error("error")
+logging.critical("critical")
+
+
+
+
+
+
+
 import logging
 logging.basicConfig(level=logging.DEBUG,
                     filename="logs.log",
@@ -8,7 +54,7 @@ try:
 except Exception:
     logging.error("Division By Zero")
 
-
+"""
 
 
 
